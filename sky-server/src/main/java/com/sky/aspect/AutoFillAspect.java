@@ -42,12 +42,12 @@ public class AutoFillAspect {
         Long currentId = BaseContext.getCurrentId();
         if(operationType==OperationType.INSERT){
             try{
-                Method setCreatTime=entity.getClass().getMethod(AutoFillConstant.SET_CREATE_TIME, LocalDate.class);
-                Method setCreateUser=entity.getClass().getMethod(AutoFillConstant.SET_CREATE_USER, Long.class);
-                Method setUpdateTime=entity.getClass().getMethod(AutoFillConstant.SET_UPDATE_TIME, LocalDate.class);
-                Method setUpdateUser=entity.getClass().getMethod(AutoFillConstant.SET_UPDATE_USER, Long.class);
+                Method setCreateTime=entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_TIME, LocalDateTime.class);
+                Method setCreateUser=entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_USER, Long.class);
+                Method setUpdateTime=entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_TIME, LocalDateTime.class);
+                Method setUpdateUser=entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER, Long.class);
 
-                setCreatTime.invoke(entity,now);
+                setCreateTime.invoke(entity,now);
                 setCreateUser.invoke(entity,currentId);
                 setUpdateTime.invoke(entity,now);
                 setUpdateUser.invoke(entity,currentId);
