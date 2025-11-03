@@ -17,4 +17,6 @@ public interface DishService {
     DishVO getByIdWithFlavor(Long id);
 
     void updateWithFlavor(DishDTO dishDTO);
+
+    void staryOrStop(Integer status, Long id);
 }
