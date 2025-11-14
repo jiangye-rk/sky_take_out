@@ -76,7 +76,7 @@ public class DishController {
     @PostMapping("/status/{status}")
     public Result startOrStop(@PathVariable Integer status,Long id){
         log.info("菜品起售停售：{}，{}",status,id);
-        dishService.staryOrStop(status,id);
+        dishService.startOrStop(status,id);
         return Result.success();
     }
     @GetMapping("/list")
