@@ -40,12 +40,12 @@ public class ShoppingCartImp implements ShoppingCartService {
             Long dishId=shoppingCart.getDishId();
             if(dishId!=null){
                 Dish dish=dishMapper.getById(dishId);
-                shoppingCart.setDishId(dishId);
+                shoppingCart.setImage(dish.getImage());
                 shoppingCart.setName(dish.getName());
                 shoppingCart.setAmount(dish.getPrice());
             }else {
                 Setmeal setmeal=setmealMapper.getById(shoppingCart.getSetmealId());
-                shoppingCart.setSetmealId(setmeal.getId());
+                shoppingCart.setImage(setmeal.getImage());
                 shoppingCart.setName(setmeal.getName());
                 shoppingCart.setAmount(setmeal.getPrice());
             }
